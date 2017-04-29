@@ -40,7 +40,7 @@
   "configSchema": "dwd-weather-config-schema.coffee",
   "dependencies": {
     "jquery": "^3.1.1",
-    "jsdom": "^9.11.0",
+    "jsdom": "^10.0.0",
     "pimatic-plugin-commons": "^0.9.3"
   },
   "optionalDependencies": {},
