@@ -39,19 +39,32 @@ module.exports = (env) ->
           unless err?
             data = {}
             $ = jquery window
+            columns = []
+            $('table thead tr').children().not(":first-child").each (index, child)->
+
+              firstChild = $(child).children().first()
+              if firstChild.length is 1 and firstChild.prop('tagName') is 'ABBR'
+                columns.push $(child).children().first().attr('title')
+              else
+                columns.push $(@).text().trim()
+
             $('table tbody').children().each ->
               if @nodeName  is 'TR'
-                args = []
-                $(this).children().not(":first-child").each (index) ->
-                  arg = $(this).text().trim()
+                values = []
+                $(@).children().not(":first-child").each ->
+                  arg = $(@).text().trim()
                   if arg.match(/^-+$/)?
                     arg=''
                   else
                     num = parseFloat(arg)
                     if (! isNaN(num))
                       arg = num
-                  args.push arg
-                data[$(this).children().first().text().trim()] = args
+                  values.push arg
+
+                result = {}
+                _.each(columns, (key, index) -> result[key] = values[index])
+                data[$(@).children().first().text().trim()] = result
+
             finalize err, data
 
     requestUpdate: () ->
@@ -176,22 +189,22 @@ module.exports = (env) ->
         # @base.debug JSON.stringify weatherData.stations
         if weatherData.hasOwnProperty @station
           data = weatherData[@station]
-          if @attributeHash.pressure? and _.isNumber data[1]
-            @attributeValues.emit "pressure", parseFloat data[1]
-          if @attributeHash.temperature? and _.isNumber data[2]
-            @attributeValues.emit "temperature", parseFloat data[2]
-          if @attributeHash.humidity? and _.isNumber data[3]
-            @attributeValues.emit "humidity", parseFloat data[3]
-          if @attributeHash.precipitation? and _.isNumber data[4]
-            @attributeValues.emit "precipitation", parseFloat data[4]
+          if @attributeHash.pressure? and _.isNumber data['Luftdruck']
+            @attributeValues.emit "pressure", parseFloat data['Luftdruck']
+          if @attributeHash.temperature? and _.isNumber data['Temperatur']
+            @attributeValues.emit "temperature", parseFloat data['Temperatur']
+          if @attributeHash.humidity? and _.isNumber data['Relative Luftfeuchte']
+            @attributeValues.emit "humidity", parseFloat data['Relative Luftfeuchte']
+          if @attributeHash.precipitation? and _.isNumber data['Niederschlag']
+            @attributeValues.emit "precipitation", parseFloat data['Niederschlag']
           if @attributeHash.windDirection?
-            @attributeValues.emit "windDirection", if _.isEmpty data[5] then '-' else data[5]
-          if @attributeHash.windSpeed? and _.isNumber data[6]
-            @attributeValues.emit "windSpeed", parseFloat data[6]
-          if @attributeHash.windGust? and _.isNumber data[7]
-            @attributeValues.emit "windGust", parseFloat data[7]
-          if @attributeHash.condition? and not _.isEmpty data[8]
-            @attributeValues.emit "condition", data[8]
+            @attributeValues.emit "windDirection", if _.isEmpty data['Windrichtung'] then '-' else data['Windrichtung']
+          if @attributeHash.windSpeed? and _.isNumber data['Windgeschwindigkeit']
+            @attributeValues.emit "windSpeed", parseFloat data['Windgeschwindigkeit']
+          if @attributeHash.windGust? and _.isNumber data['Windspitzen']
+            @attributeValues.emit "windGust", parseFloat data['Windspitzen']
+          if @attributeHash.condition? and not _.isEmpty data['Wetter+Wolken']
+            @attributeValues.emit "condition", data['Wetter+Wolken']
         else
           @base.error "No weather data found for station #{@station}" unless stationData?
           @plugin.removeListener 'weatherUpdate', @weatherUpdateHandler
