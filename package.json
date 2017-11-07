@@ -39,9 +39,9 @@
   ],
   "configSchema": "dwd-weather-config-schema.coffee",
   "dependencies": {
-    "jquery": "^3.1.1",
-    "jsdom": "^10.0.0",
-    "pimatic-plugin-commons": "^0.9.3"
+    "jquery": "^3.2.1",
+    "jsdom": "^11.3.0",
+    "pimatic-plugin-commons": "^0.9.5"
   },
   "optionalDependencies": {},
   "peerDependencies": {
