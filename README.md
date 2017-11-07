@@ -1,7 +1,6 @@
 # pimatic-dwd-weather
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/mwittig/pimatic-dwd-weather.svg)](https://greenkeeper.io/)
-
 [![Npm Version](https://badge.fury.io/js/pimatic-dwd-weather.svg)](http://badge.fury.io/js/pimatic-dwd-weather)
 [![Build Status](https://travis-ci.org/mwittig/pimatic-dwd-weather.svg?branch=master)](https://travis-ci.org/mwittig/pimatic-dwd-weather)
 [![Dependency Status](https://david-dm.org/mwittig/pimatic-dwd-weather.svg)](https://david-dm.org/mwittig/pimatic-dwd-weather)
