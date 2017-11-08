@@ -1,4 +1,7 @@
 # Release History
+
+* 20171108, V0.9.2
+    * Downgraded jsdom package to workaround node.js v4 build issue
     
 * 20171107, V0.9.1
     * Use column headers to access data fields as the number 
