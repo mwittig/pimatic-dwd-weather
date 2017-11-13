@@ -40,13 +40,8 @@ module.exports = (env) ->
             data = {}
             $ = jquery window
             columns = []
-            $('table thead tr').children().not(":first-child").each (index, child)->
-
-              firstChild = $(child).children().first()
-              if firstChild.length is 1 and firstChild.prop('tagName') is 'ABBR'
-                columns.push $(child).children().first().attr('title')
-              else
-                columns.push $(@).text().trim()
+            $('table thead tr').children().not(":first-child").each ()->
+              columns.push $(@).text().trim()
 
             $('table tbody').children().each ->
               if @nodeName  is 'TR'
@@ -189,20 +184,21 @@ module.exports = (env) ->
         # @base.debug JSON.stringify weatherData.stations
         if weatherData.hasOwnProperty @station
           data = weatherData[@station]
-          if @attributeHash.pressure? and _.isNumber data['Luftdruck']
-            @attributeValues.emit "pressure", parseFloat data['Luftdruck']
-          if @attributeHash.temperature? and _.isNumber data['Temperatur']
-            @attributeValues.emit "temperature", parseFloat data['Temperatur']
-          if @attributeHash.humidity? and _.isNumber data['Relative Luftfeuchte']
-            @attributeValues.emit "humidity", parseFloat data['Relative Luftfeuchte']
-          if @attributeHash.precipitation? and _.isNumber data['Niederschlag']
-            @attributeValues.emit "precipitation", parseFloat data['Niederschlag']
+          if @attributeHash.pressure? and _.isNumber data['LUFTD.']
+            @attributeValues.emit "pressure", parseFloat data['LUFTD.']
+          if @attributeHash.temperature? and _.isNumber data['TEMP.']
+            @attributeValues.emit "temperature", parseFloat data['TEMP.']
+          if @attributeHash.humidity? and _.isNumber data['U%']
+            @attributeValues.emit "humidity", parseFloat data['U%']
+          if @attributeHash.precipitation?
+            @attributeValues.emit "precipitation", parseFloat data['RR30'] if _.isNumber data['RR30']
+            @attributeValues.emit "precipitation", Math.round(parseFloat(data['RR1']) / 2) if _.isNumber data['RR1']
           if @attributeHash.windDirection?
-            @attributeValues.emit "windDirection", if _.isEmpty data['Windrichtung'] then '-' else data['Windrichtung']
-          if @attributeHash.windSpeed? and _.isNumber data['Windgeschwindigkeit']
-            @attributeValues.emit "windSpeed", parseFloat data['Windgeschwindigkeit']
-          if @attributeHash.windGust? and _.isNumber data['Windspitzen']
-            @attributeValues.emit "windGust", parseFloat data['Windspitzen']
+            @attributeValues.emit "windDirection", if _.isEmpty data['DD'] then '-' else data['DD']
+          if @attributeHash.windSpeed? and _.isNumber data['FF']
+            @attributeValues.emit "windSpeed", parseFloat data['FF']
+          if @attributeHash.windGust? and _.isNumber data['FX']
+            @attributeValues.emit "windGust", parseFloat data['FX']
           if @attributeHash.condition? and not _.isEmpty data['Wetter+Wolken']
             @attributeValues.emit "condition", data['Wetter+Wolken']
         else
