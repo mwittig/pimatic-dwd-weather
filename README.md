@@ -60,11 +60,13 @@ The DWD Weather device is provided to obtain weather data for a single location.
     }
 
 The location is defined by setting the station name which may be one of the following: 
+
+```
 "UFS TW Ems, HH",  "UFS Deutsche Bucht, HH",  "Helgoland, SH",  "List/Sylt, SH",  "Schleswig, SH",
 "Leuchtturm Kiel, SH",  "Kiel, SH",  "Fehmarn, SH",  "Arkona, MV",  "Norderney, NI                                                                             )",
 "Leuchtt. Alte Weser, NI",  "Cuxhaven, NI",  "Hamburg-Flh., HH",  "Schwerin, MV",  "Rostock, MV",
 "Greifswald, MV",  "Emden, NI",  "Bremen-Flh., HB",  "Lüchow, NI",  "Marnitz, MV",
-"Waren, MV",  "Neuruppin, BB",  "Angermünde, BB",  "Münster/Osnabr.-Flh., NW",  "Hannover-Flh.^, NI",
+"Waren, MV",  "Neuruppin, BB",  "Angermünde, BB",  "Münster/Osnabr.-Flh., NW",  "Hannover-Flh., NI",
 "Magdeburg, ST",  "Potsdam, BB",  "Berlin-Tegel, BE",  "Berlin-Tempelhof, BE",  "Berlin-Dahlem, BE",
 "Lindenberg, BB",  "Düsseldorf-Flh., NW",  "Essen, NW",  "Kahler Asten, NW",  "Bad Lippspringe, NW",
 "Fritzlar, HE",  "Brocken, ST",  "Leipzig-Flh., SN",  "Dresden-Flh., SN",  "Cottbus, BB",
@@ -75,7 +77,8 @@ The location is defined by setting the station name which may be one of the foll
 "Mannheim, BW",  "Stuttgart-Flh., BW",  "Öhringen, BW",  "Nürnberg-Flh., BY",  "Regensburg, BY",
 "Straubing, BY",  "Großer Arber, BY",  "Lahr, BW",  "Freudenstadt, BW",  "Stötten, BW",
 "Augsburg, BY",  "München-Flh., BY",  "Fürstenzell, BY",  "Feldberg/Schw., BW",  "Konstanz, BW",
-"Kempten, BY",  "Oberstdorf, BY",  "Zugspitze, BY",  "Hohenpeißenberg, BY".
+"Kempten, BY",  "Oberstdorf, BY",  "Zugspitze, BY",  "Hohenpeißenberg, BY"
+```
 
 The device has the following configuration properties:
 
