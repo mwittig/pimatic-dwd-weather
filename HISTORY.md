@@ -1,5 +1,8 @@
 # Release History
 
+* 20171118, V0.9.3
+    * Improved handling of precipitation readings
+    
 * 20171108, V0.9.2
     * Downgraded jsdom package to workaround node.js v4 build issue
     
