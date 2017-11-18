@@ -192,7 +192,6 @@ module.exports = (env) ->
             @attributeValues.emit "humidity", parseFloat data['U%']
           if @attributeHash.precipitation?
             @attributeValues.emit "precipitation", parseFloat data['RR30'] if _.isNumber data['RR30']
-            @attributeValues.emit "precipitation", Math.round(parseFloat(data['RR1']) / 2) if _.isNumber data['RR1']
           if @attributeHash.windDirection?
             @attributeValues.emit "windDirection", if _.isEmpty data['DD'] then '-' else data['DD']
           if @attributeHash.windSpeed? and _.isNumber data['FF']
