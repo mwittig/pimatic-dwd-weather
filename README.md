@@ -62,7 +62,7 @@ The location is defined by setting the station name which may be one of the foll
 
 ```
 "UFS TW Ems, HH",  "UFS Deutsche Bucht, HH",  "Helgoland, SH",  "List/Sylt, SH",  "Schleswig, SH",
-"Leuchtturm Kiel, SH",  "Kiel, SH",  "Fehmarn, SH",  "Arkona, MV",  "Norderney, NI                                                                             )",
+"Leuchtturm Kiel, SH",  "Kiel, SH",  "Fehmarn, SH",  "Arkona, MV",  "Norderney, NI",
 "Leuchtt. Alte Weser, NI",  "Cuxhaven, NI",  "Hamburg-Flh., HH",  "Schwerin, MV",  "Rostock, MV",
 "Greifswald, MV",  "Emden, NI",  "Bremen-Flh., HB",  "Lüchow, NI",  "Marnitz, MV",
 "Waren, MV",  "Neuruppin, BB",  "Angermünde, BB",  "Münster/Osnabr.-Flh., NW",  "Hannover-Flh., NI",
