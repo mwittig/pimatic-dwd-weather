@@ -1,5 +1,9 @@
 # Release History
 
+* 20180301, V0.9.4
+    * Call window.close() to make sure dom resources will be fully released
+    * Removed obsolete timer code
+
 * 20171118, V0.9.3
     * Improved handling of precipitation readings
     

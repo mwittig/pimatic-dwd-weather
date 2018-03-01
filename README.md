@@ -93,7 +93,7 @@ in the following example.
 
 ## License
 
-Copyright (c) 2015-2017, Marcus Wittig and contributors. All rights reserved.
+Copyright (c) 2015-2018, Marcus Wittig and contributors. All rights reserved.
 
 [AGPL-3.0](https://github.com/mwittig/pimatic-johnny-five/blob/master/LICENSE)
 
