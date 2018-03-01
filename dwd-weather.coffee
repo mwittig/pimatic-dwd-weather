@@ -28,8 +28,6 @@ module.exports = (env) ->
     getData: () ->
       new Promise (resolve, reject) =>
         finalize = (error, result) =>
-          clearTimeout @timeoutId if @timeoutId?
-          @timeoutId = null
           unless error?
             resolve result
           else
@@ -60,6 +58,7 @@ module.exports = (env) ->
                 _.each(columns, (key, index) -> result[key] = values[index])
                 data[$(@).children().first().text().trim()] = result
 
+            window.close()
             finalize err, data
 
     requestUpdate: () ->
