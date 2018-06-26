@@ -6,8 +6,8 @@ module.exports = (env) ->
   types = env.require('decl-api').types
   _ = env.require 'lodash'
   commons = require('pimatic-plugin-commons')(env)
-  jsdom = require 'jsdom'
-  jquery = require 'jquery'
+  rp = require 'request-promise'
+  cheerio = require 'cheerio'
 
   # ###DwdWeatherPlugin class
   class DwdWeatherPlugin extends env.plugins.Plugin
@@ -26,40 +26,38 @@ module.exports = (env) ->
       })
 
     getData: () ->
+      options =
+        uri: @url
+        transform: (body) ->
+          cheerio.load(body)
+
       new Promise (resolve, reject) =>
-        finalize = (error, result) =>
-          unless error?
-            resolve result
-          else
-            @base.rejectWithErrorString reject, error
+        rp(options)
+        .then ($) ->
+          data = {}
+          columns = []
+          $('table thead tr').children().not(":first-child").each ()->
+            columns.push $(@).text().trim()
 
-        jsdom.env @url, (err, window) =>
-          unless err?
-            data = {}
-            $ = jquery window
-            columns = []
-            $('table thead tr').children().not(":first-child").each ()->
-              columns.push $(@).text().trim()
+          $('table tbody').children().each ->
+            if @name  is 'tr'
+              values = []
+              $(@).children().not(":first-child").each ->
+                arg = $(@).text().trim()
+                if arg.match(/^-+$/)?
+                  arg=''
+                else
+                  num = parseFloat(arg)
+                  if (! isNaN(num))
+                    arg = num
+                values.push arg
 
-            $('table tbody').children().each ->
-              if @nodeName  is 'TR'
-                values = []
-                $(@).children().not(":first-child").each ->
-                  arg = $(@).text().trim()
-                  if arg.match(/^-+$/)?
-                    arg=''
-                  else
-                    num = parseFloat(arg)
-                    if (! isNaN(num))
-                      arg = num
-                  values.push arg
+              result = {}
+              _.each(columns, (key, index) -> result[key] = values[index])
+              data[$(@).children().first().text().trim()] = result
 
-                result = {}
-                _.each(columns, (key, index) -> result[key] = values[index])
-                data[$(@).children().first().text().trim()] = result
-
-            window.close()
-            finalize err, data
+          resolve data
+        .catch reject
 
     requestUpdate: () ->
       @base.debug "#{@listenerCount 'weatherUpdate'} event listeners"
@@ -180,7 +178,7 @@ module.exports = (env) ->
 
     createWeatherUpdateHandler: () ->
       return (weatherData) =>
-        # @base.debug JSON.stringify weatherData.stations
+        @base.debug JSON.stringify weatherData
         if weatherData.hasOwnProperty @station
           data = weatherData[@station]
           if @attributeHash.pressure? and _.isNumber data['LUFTD.']
