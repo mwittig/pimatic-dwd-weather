@@ -20,7 +20,7 @@
     "DWD",
     "Pimatic"
   ],
-  "version": "0.9.4",
+  "version": "0.9.5",
   "homepage": "https://github.com/mwittig/pimatic-dwd-weather/tree/master",
   "private": false,
   "repository": {

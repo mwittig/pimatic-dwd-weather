@@ -1,11 +1,14 @@
 # Release History
 
+* 20180626, V0.9.5
+    * Stability: Replaced jsdom/jquery with cheerio which provides better performance and less memory usage
+
 * 20180301, V0.9.4
-    * Call window.close() to make sure dom resources will be fully released
-    * Removed obsolete timer code
+    * Stability: Call window.close() to make sure dom resources will be fully released
+    * Stability: Removed obsolete timer code
 
 * 20171118, V0.9.3
-    * Improved handling of precipitation readings
+    * Fixture: Improved handling of precipitation readings
     
 * 20171108, V0.9.2
     * Downgraded jsdom package to workaround node.js v4 build issue
