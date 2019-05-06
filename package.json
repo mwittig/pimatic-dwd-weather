@@ -39,10 +39,10 @@
   ],
   "configSchema": "dwd-weather-config-schema.coffee",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.2",
-    "pimatic-plugin-commons": "^0.9.8",
+    "cheerio": "^1.0.0-rc.3",
+    "pimatic-plugin-commons": "^0.9.10",
     "request": "^2.88.0",
-    "request-promise": "^4.2.2"
+    "request-promise": "^4.2.4"
   },
   "optionalDependencies": {},
   "peerDependencies": {
