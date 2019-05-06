@@ -38,6 +38,10 @@ The plugin has the following configuration properties:
 | interval          | 10       | Number  | The time interval in minutes (minimum 10) at which the weather data will be queried |
 
 
+## Installation
+
+Please note, the minimal node.js version required to run the plugin is version 4.5.
+
 ## Device Configuration
 
 The DWD Weather device is provided to obtain weather data for a single location. 
