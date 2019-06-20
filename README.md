@@ -99,6 +99,6 @@ in the following example.
 
 Copyright (c) 2015-2019, Marcus Wittig and contributors. All rights reserved.
 
-[AGPL-3.0](https://github.com/mwittig/pimatic-johnny-five/blob/master/LICENSE)
+[AGPL-3.0](https://github.com/mwittig/pimatic-dwd-weather/blob/master/LICENSE)
 
 
